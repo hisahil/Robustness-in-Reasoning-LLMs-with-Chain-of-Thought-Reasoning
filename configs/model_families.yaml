@@ -1,0 +1,243 @@
+# Per-model-family settings for cross-model experiments (Phase 0+).
+#
+# How lookups work:
+#   resolve_model_family(model_name) matches model_name (case-insensitive) against
+#   `match` substrings; first match wins; unmatched names fall back to `default`.
+#
+# Fields:
+#   slug                    Filesystem-safe model identifier (used for
+#                           data/baselines/<slug>/, results/<slug>/, config
+#                           overlays configs/experiment_<slug>.yaml).
+#                           MUST be unique across families — no short_model_name
+#                           heuristic (Ministral-14B would collide with DeepSeek-14B).
+#   think_tags.open/close   Model's reasoning delimiters. Continuation-mode
+#                           string-based matching / stop-prefill / recovery
+#                           parsing all key off `close`.
+#   think_tags.trigger      Token or string that must appear in the SYSTEM prompt
+#                           to enable thinking (Gemma). null = template does it.
+#   think_tags.keep_in_history  Ministral recommends keeping reasoning traces in
+#                           context. Continuation mode already packs the full
+#                           trace into a single-turn prompt, so this is
+#                           informational; adaptive_dialogue must NOT strip.
+#   tokenizer_extra_kwargs  Extra kwargs for apply_chat_template (Gemma:
+#                           enable_thinking=True).
+#   baseline_sampling       Script 1 sampling (Recum-konform: per Model Card).
+#                           MUST include temperature; top_p and top_k optional.
+#   vllm_serve.flags        Extra CLI flags for `vllm serve` (--reasoning-parser,
+#                           --trust-remote-code, --tokenizer_mode mistral, ...).
+#   vllm_engine.max_model_len   Prompt + generation cap for KV cache fit.
+#   vllm_engine.gpu_memory_utilization   Passed to vllm.LLM(...).
+#
+# Continuation-mode sampling is UNIFORM across all families (Recum Table 15,
+# post-intervention row). Defined once below, not per family.
+
+continuation_sampling:
+  temperature: 0.6
+  top_p: 0.95
+  # No top_k — Recum uses N/A across all evaluated models here.
+
+families:
+  deepseek:
+    match:
+      - DeepSeek-R1-Distill
+      - deepseek-r1
+      - deepseek-ai/DeepSeek
+    slug: deepseek  # legacy per-checkpoint slugs (1.5b/7b/14b/32b) are kept
+                    # separate; this base family only supplies tag/sampling
+                    # defaults and is never used as a filesystem slug.
+    think_tags:
+      open: "<think>"
+      close: "</think>"
+      trigger: null
+      keep_in_history: false
+    tokenizer_extra_kwargs: {}
+    baseline_sampling:
+      temperature: 0.6
+      top_p: 0.95
+    vllm_serve:
+      flags: []
+    vllm_engine:
+      max_model_len: 16384
+      gpu_memory_utilization: 0.92
+
+  glm_z1_9b:
+    match:
+      - GLM-Z1-9B
+      - glm-z1-9b
+    slug: glm-z1-9b
+    # GLM emits "Step N:" INSIDE the think block (draft) AND after </think>
+    # (fair copy). Strip the think block before segmentation so parse_numbered_steps
+    # only sees the post-</think> fair copy — matches DeepSeek's structure.
+    # Flat-text prompt kept (baseline_use_chat_template stays false) for DeepSeek alignment.
+    baseline_strip_think: true
+    think_tags:
+      open: "<think>"
+      close: "</think>"
+      trigger: null
+      keep_in_history: false
+    tokenizer_extra_kwargs: {}
+    baseline_sampling:
+      temperature: 0.6
+      top_p: 0.95
+      top_k: 40
+    vllm_serve:
+      flags:
+        - "--reasoning-parser"
+        - "glm45"
+        - "--trust-remote-code"
+    vllm_engine:
+      max_model_len: 16384
+      gpu_memory_utilization: 0.90
+
+  gemma_4_12b:
+    match:
+      - gemma-4-12B
+      - gemma-4-12b
+      - google/gemma-4-12
+    slug: gemma-4-12b
+    baseline_prompt: prompts/baseline_generation_gemma.txt
+    baseline_use_chat_template: true
+    think_tags:
+      # NOTE: exact spelling verified via smoke_cross_model.py prompt_audit.
+      # Documented as `<|channel|>thought\n` ... `<|channel|>`; adjust here
+      # if the smoke shows a different literal.
+      open: "<|channel|>thought\n"
+      close: "<|channel|>"
+      trigger: "<|think|>"
+      keep_in_history: false
+    tokenizer_extra_kwargs:
+      enable_thinking: true
+    baseline_sampling:
+      temperature: 1.0
+      top_p: 0.95
+      top_k: 64
+      max_new_tokens: 8192
+      repetition_penalty: 1.05
+    vllm_serve:
+      flags:
+        - "--reasoning-parser"
+        - "gemma"
+    vllm_engine:
+      # Gemma 4 12B native ctx = 256K; capped at 16384 for KV cache on 80GB
+      # (matches our DeepSeek cap; enough for baseline + k=3 continuation).
+      max_model_len: 16384
+      gpu_memory_utilization: 0.85
+      # Text-only MATH: skip vision encoder profiling (vLLM 0.24 VRAM spike).
+      limit_mm_per_prompt:
+        image: 0
+
+  ministral_3_14b:
+    match:
+      - Ministral-3-14B
+      - ministral-3-14b
+    slug: ministral-3-14b
+    think_tags:
+      # Ministral/Magistral reasoning-parser format; verify literal via smoke.
+      open: "[THINK]"
+      close: "[/THINK]"
+      trigger: null
+      keep_in_history: true
+    tokenizer_extra_kwargs: {}
+    baseline_sampling:
+      temperature: 1.0
+      top_p: 0.95
+    vllm_serve:
+      flags:
+        - "--tokenizer_mode"
+        - "mistral"
+        - "--config_format"
+        - "mistral"
+        - "--load_format"
+        - "mistral"
+        - "--reasoning-parser"
+        - "mistral"
+    vllm_engine:
+      max_model_len: 16384
+      gpu_memory_utilization: 0.90
+      # Python-API kwargs — REQUIRED. Without these, VLLMBackend loads the HF
+      # tokenizer which does not know Mistral's chat template, and the model
+      # emits [/INST]/[SYSTEM_PROMPT]/[/RESPONSE] tokens into the output
+      # (chat-template leak observed at 22% of Ministral traces in smoke).
+      tokenizer_mode: mistral
+      config_format: mistral
+      load_format: mistral
+    # Additional stop tokens beyond the standard EOS. Prevents Ministral from
+    # continuing generation after self-emitting Mistral chat tokens.
+    stop_tokens:
+      - "[INST]"
+      - "[/INST]"
+      - "</s>"
+      - "[/RESPONSE]"
+      - "[SYSTEM_PROMPT]"
+
+  olmo_3_7b_think:
+    match:
+      - Olmo-3-7B-Think
+      - olmo-3-7b
+      - allenai/Olmo-3
+    slug: olmo-3-7b
+    # Think variant emits <think>...</think> (Ai2 card).
+    # Fair copy lives after </think>; strip like DeepSeek/GLM for Script 1.
+    baseline_strip_think: true
+    think_tags:
+      open: "<think>"
+      close: "</think>"
+      trigger: null
+      keep_in_history: false
+    tokenizer_extra_kwargs: {}
+    baseline_sampling:
+      temperature: 0.6
+      top_p: 0.95
+      top_k: 50
+    vllm_serve:
+      flags:
+        - "--trust-remote-code"
+    vllm_engine:
+      max_model_len: 16384
+      gpu_memory_utilization: 0.90
+      # vLLM's olmo2 loader expects a flat rope_parameters dict with rope_theta.
+      # Newer Olmo3 HF configs nest theta under sliding/full attention blocks;
+      # override flattens it so EngineCore can start (verified on RunPod v0.24).
+      hf_overrides:
+        rope_parameters:
+          rope_type: default
+          rope_theta: 500000.0
+
+  phi_4_reasoning:
+    match:
+      - Phi-4-reasoning
+      - phi-4-reasoning
+    slug: phi-4-reasoning
+    think_tags:
+      open: "<think>"
+      close: "</think>"
+      trigger: null
+      keep_in_history: false
+    tokenizer_extra_kwargs: {}
+    baseline_sampling:
+      temperature: 0.6
+      top_p: 0.95
+    vllm_serve:
+      flags: []
+    vllm_engine:
+      max_model_len: 16384
+      gpu_memory_utilization: 0.92
+
+default:
+  # Applied when no family matches. Keeps DeepSeek behaviour so legacy paths
+  # (dry-run backends, transformers fallback with a generic model) still work.
+  slug: default
+  think_tags:
+    open: "<think>"
+    close: "</think>"
+    trigger: null
+    keep_in_history: false
+  tokenizer_extra_kwargs: {}
+  baseline_sampling:
+    temperature: 0.6
+    top_p: 0.95
+  vllm_serve:
+    flags: []
+  vllm_engine:
+    max_model_len: 16384
+    gpu_memory_utilization: 0.92

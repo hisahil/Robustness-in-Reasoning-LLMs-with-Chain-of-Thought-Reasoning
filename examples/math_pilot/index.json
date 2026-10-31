@@ -1,0 +1,452 @@
+[
+  {
+    "file": "01_off_topic_math500_test_algebra_1082.json",
+    "task_id": "math500_test_algebra_1082.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "02_paraphrased_shift_math500_test_algebra_1214.json",
+    "task_id": "math500_test_algebra_1214.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": true,
+    "continued_matches": false
+  },
+  {
+    "file": "03_false_consensus_math500_test_algebra_1338.json",
+    "task_id": "math500_test_algebra_1338.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "04_off_topic_math500_test_algebra_1578.json",
+    "task_id": "math500_test_algebra_1578.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "05_paraphrased_shift_math500_test_algebra_1837.json",
+    "task_id": "math500_test_algebra_1837.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "06_false_consensus_math500_test_algebra_2102.json",
+    "task_id": "math500_test_algebra_2102.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "07_off_topic_math500_test_algebra_2199.json",
+    "task_id": "math500_test_algebra_2199.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "08_paraphrased_shift_math500_test_algebra_2253.json",
+    "task_id": "math500_test_algebra_2253.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "09_false_consensus_math500_test_algebra_2277.json",
+    "task_id": "math500_test_algebra_2277.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "10_off_topic_math500_test_algebra_2470.json",
+    "task_id": "math500_test_algebra_2470.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "11_paraphrased_shift_math500_test_algebra_251.json",
+    "task_id": "math500_test_algebra_251.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": true,
+    "continued_matches": false
+  },
+  {
+    "file": "12_false_consensus_math500_test_algebra_2551.json",
+    "task_id": "math500_test_algebra_2551.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "13_off_topic_math500_test_algebra_2735.json",
+    "task_id": "math500_test_algebra_2735.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "14_paraphrased_shift_math500_test_algebra_2780.json",
+    "task_id": "math500_test_algebra_2780.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "15_false_consensus_math500_test_algebra_346.json",
+    "task_id": "math500_test_algebra_346.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "16_off_topic_math500_test_algebra_524.json",
+    "task_id": "math500_test_algebra_524.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "17_paraphrased_shift_math500_test_algebra_661.json",
+    "task_id": "math500_test_algebra_661.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "18_false_consensus_math500_test_algebra_791.json",
+    "task_id": "math500_test_algebra_791.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "19_off_topic_math500_test_algebra_849.json",
+    "task_id": "math500_test_algebra_849.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "20_paraphrased_shift_math500_test_algebra_873.json",
+    "task_id": "math500_test_algebra_873.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "21_false_consensus_math500_test_counting_and_probability_1009.json",
+    "task_id": "math500_test_counting_and_probability_1009.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "22_off_topic_math500_test_counting_and_probability_14.json",
+    "task_id": "math500_test_counting_and_probability_14.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "23_paraphrased_shift_math500_test_counting_and_probability_51.json",
+    "task_id": "math500_test_counting_and_probability_51.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "24_false_consensus_math500_test_counting_and_probability_913.json",
+    "task_id": "math500_test_counting_and_probability_913.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "25_off_topic_math500_test_geometry_483.json",
+    "task_id": "math500_test_geometry_483.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "26_paraphrased_shift_math500_test_intermediate_algebra_1111.json",
+    "task_id": "math500_test_intermediate_algebra_1111.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "27_false_consensus_math500_test_intermediate_algebra_1247.json",
+    "task_id": "math500_test_intermediate_algebra_1247.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "28_off_topic_math500_test_intermediate_algebra_1407.json",
+    "task_id": "math500_test_intermediate_algebra_1407.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": true,
+    "continued_matches": false
+  },
+  {
+    "file": "29_paraphrased_shift_math500_test_intermediate_algebra_1572.json",
+    "task_id": "math500_test_intermediate_algebra_1572.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "30_false_consensus_math500_test_intermediate_algebra_1994.json",
+    "task_id": "math500_test_intermediate_algebra_1994.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "31_off_topic_math500_test_intermediate_algebra_690.json",
+    "task_id": "math500_test_intermediate_algebra_690.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "32_paraphrased_shift_math500_test_intermediate_algebra_966.json",
+    "task_id": "math500_test_intermediate_algebra_966.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "33_false_consensus_math500_test_number_theory_1002.json",
+    "task_id": "math500_test_number_theory_1002.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "34_off_topic_math500_test_number_theory_1201.json",
+    "task_id": "math500_test_number_theory_1201.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "35_paraphrased_shift_math500_test_number_theory_149.json",
+    "task_id": "math500_test_number_theory_149.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "36_false_consensus_math500_test_number_theory_239.json",
+    "task_id": "math500_test_number_theory_239.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "37_off_topic_math500_test_number_theory_466.json",
+    "task_id": "math500_test_number_theory_466.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "38_paraphrased_shift_math500_test_number_theory_572.json",
+    "task_id": "math500_test_number_theory_572.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "39_false_consensus_math500_test_number_theory_737.json",
+    "task_id": "math500_test_number_theory_737.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "40_off_topic_math500_test_number_theory_820.json",
+    "task_id": "math500_test_number_theory_820.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "41_paraphrased_shift_math500_test_number_theory_931.json",
+    "task_id": "math500_test_number_theory_931.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "42_false_consensus_math500_test_prealgebra_1233.json",
+    "task_id": "math500_test_prealgebra_1233.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "43_off_topic_math500_test_prealgebra_1272.json",
+    "task_id": "math500_test_prealgebra_1272.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "44_paraphrased_shift_math500_test_prealgebra_1555.json",
+    "task_id": "math500_test_prealgebra_1555.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "45_false_consensus_math500_test_prealgebra_1787.json",
+    "task_id": "math500_test_prealgebra_1787.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "46_off_topic_math500_test_prealgebra_192.json",
+    "task_id": "math500_test_prealgebra_192.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "47_paraphrased_shift_math500_test_prealgebra_2086.json",
+    "task_id": "math500_test_prealgebra_2086.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "short",
+    "immediate_matches": true,
+    "continued_matches": true
+  },
+  {
+    "file": "48_false_consensus_math500_test_prealgebra_505.json",
+    "task_id": "math500_test_prealgebra_505.json",
+    "error_type": "false_consensus",
+    "k": 3,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": false
+  },
+  {
+    "file": "49_off_topic_math500_test_prealgebra_996.json",
+    "task_id": "math500_test_prealgebra_996.json",
+    "error_type": "off_topic",
+    "k": 1,
+    "length_level": "short",
+    "immediate_matches": false,
+    "continued_matches": true
+  },
+  {
+    "file": "50_paraphrased_shift_math500_test_precalculus_1289.json",
+    "task_id": "math500_test_precalculus_1289.json",
+    "error_type": "paraphrased_shift",
+    "k": 2,
+    "length_level": "long",
+    "immediate_matches": false,
+    "continued_matches": true
+  }
+]
